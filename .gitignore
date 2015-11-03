@@ -5,6 +5,7 @@ application.linux64
 application.windows32
 application.windows64
 application.macosx
+<<<<<<< HEAD
 
 # =========================
 # Operating System Files
@@ -52,3 +53,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+>>>>>>> 268633f79b1252abfe54767b19aa03b9e21941a6
