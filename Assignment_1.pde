@@ -15,10 +15,10 @@ void setup(){
   file.add(new Music("The Beatles - Penny Lane.mp3"));//file.get(3)
   file.add(new Music("The Fellowship of the Ring Soundtrack-02-Concerning Hobbits.mp3"));//file.get(4)
   file.add(new Music("Star Wars Episode IV Soundtrack - Rebel Blockade Runner.mp3"));//file.get(5)
-  /*file.add(new Music(""));//file.get(6)
-  file.add(new Music(""));//file.get(7)
-  file.add(new Music(""));//file.get(8)
-  file.add(new Music(""));//file.get(9)*/
+  file.add(new Music("ZHU - Faded (ODESZA Remix).mp3"));//file.get(6)
+  file.add(new Music("Foals - Spanish Sahara Lyrics.mp3"));//file.get(7)
+  file.add(new Music("Mt Eden Dubstep - Sierra Leone.mp3"));//file.get(8)
+  file.add(new Music("Massive Attack - Pray for Rain.mp3"));//file.get(9)
   
   file.get(0).play();
 }
