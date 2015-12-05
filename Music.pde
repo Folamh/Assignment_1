@@ -8,10 +8,20 @@ class Music{
   FFT fft;
   
   String sLength;
+  String saveAs;
+  
+  boolean checked;
+  int c1, c2, c3;
   
   Music(String fileName){
     song = minim.loadFile(fileName);
     meta = song.getMetaData();
+    saveAs = fileName;
+    
+    checked = false;
+    c1 = (int) random(0, 255);
+    c2 = (int) random(0, 255);
+    c3 = (int) random(0, 255);
     
     sLength = String.format("%02d:%02d", 
       TimeUnit.MILLISECONDS.toMinutes(meta.length()), 
@@ -22,6 +32,11 @@ class Music{
   void play(){
     song.play();
     fft = new FFT(song.bufferSize(), song.sampleRate());
+  }
+  
+  void reWind(){
+    song.rewind();
+    song.pause();
   }
   
   void wave(int startX,int startY){
@@ -42,27 +57,27 @@ class Music{
     }
   };
   
-  void songTitle(){
+  void songTitle(int startX){
     stroke(255);
     textAlign(CENTER);
-    text(meta.title(), width/2, 10);
+    text(meta.title(), startX+512, 10);
     
     
   }
   
-  void songTime(){
+  void songTime(int startX){
     stroke(255);
     textAlign(LEFT);
     text((String.format("%02d:%02d", 
       TimeUnit.MILLISECONDS.toMinutes(song.position()), 
       TimeUnit.MILLISECONDS.toSeconds(song.position()) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(song.position()))
-    )), 128, height - 10);
+    )), startX, height - 10);
     
     textAlign(RIGHT);
-    text(sLength, width - 128, height - 10);
+    text(sLength, width, height - 10);
     
-    line(160, height - 14, width - 165, height - 14);
+    line(startX+35, height - 14, width - 35, height - 14);
     stroke(0, 0, 255);
-    line(160, height - 14, map(song.position(), 0, meta.length(), 160, width - 165), height - 14);
+    line(startX+35, height - 14, map(song.position(), 0, meta.length(), startX+35, width - 35), height - 14);
   }
 }
