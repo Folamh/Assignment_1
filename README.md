@@ -20,4 +20,4 @@ The "Graph" button shows the user the pie chart clicking it again will return to
 ![alt tag](README_pics/graph.PNG)
 ![alt tag](README_pics/graphSelect.PNG)
 
-That’s about it the program is fairly simple and clear.
+That’s about it, the program is fairly simple and clear.
