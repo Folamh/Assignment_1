@@ -14,7 +14,7 @@ int totalPie = 0;
 int menuWidth = 256;
 
 boolean graph = false;// boolean that sets if it displays the audio visulizer or the graph
-boolean pause = false;
+boolean pause = false;// sets if the song is paused or not.
 int track = 0; //Current track/song playing
 
 void setup(){
