@@ -211,7 +211,10 @@ void makePie(){//creates the pie chart
   }
   fill(255);
   textAlign(LEFT);
-  text("Song length comparison:", menuWidth + 5, 15);
+  text("Song length comparison: " + (String.format("%02d:%02d", 
+      TimeUnit.MILLISECONDS.toMinutes(totalPie), 
+      TimeUnit.MILLISECONDS.toSeconds(totalPie) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(totalPie)))
+    ), menuWidth + 5, 15);
 }
 
 void movePlay(){//Allows the user to skip forward in the song
