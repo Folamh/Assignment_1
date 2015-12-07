@@ -14,7 +14,7 @@ int totalPie = 0;
 int menuWidth = 256;
 
 boolean graph = false;// boolean that sets if it displays the audio visulizer or the graph
-
+boolean pause = false;
 int track = 0; //Current track/song playing
 
 void setup(){
@@ -75,8 +75,8 @@ void setup(){
 
 void draw(){
   background(0);
-  stroke(155);
-  fill(155);
+  stroke(100);
+  fill(100);
   rect(0, 0, menuWidth - 1, height);
   fill(255);
   if(graph){
@@ -98,15 +98,15 @@ void draw(){
     }
   }
   if(! file.get(track).song.isPlaying()){//If the song ends it will play the next track.
+    file.get(track).reWind();
+    track++;
     if(track >= file.size()){
       track = 0;
-    }
-    else{
-      track++;
     }
     file.get(track).play();
   }
   file.get(track).songTime(menuWidth);
+  movePlay();
 }
 
 void Music(int play) {
@@ -146,12 +146,14 @@ public void controlEvent(ControlEvent theEvent) {//the event controller for the 
 
 public void Play(){
   if(! file.get(track).song.isPlaying()){// will play the song if it has been paused
+    pause = false;
     file.get(track).play();
   }
 }
 
 public void Pause(){// if the song is playing it will pause it
   if(file.get(track).song.isPlaying()){
+    pause = false;
     file.get(track).song.pause();
   }
 }
@@ -210,4 +212,19 @@ void makePie(){//creates the pie chart
   fill(255);
   textAlign(LEFT);
   text("Song length comparison:", menuWidth + 5, 15);
+}
+
+void movePlay(){//Allows the user to skip forward in the song
+  if((mouseX > menuWidth + 35) && (mouseX < width - 35) && (mouseY > height - 30)){
+    stroke(0, 0, 255);
+    fill(0, 0, 255);
+    ellipseMode(CENTER);
+    ellipse(mouseX, height - 14, 5, 5);
+    if(mousePressed){
+      int i = (int) map(mouseX, menuWidth + 35,width - 35, 0, file.get(track).meta.length());
+      if(i >= 0 && i < file.get(track).song.length()){
+        file.get(track).song.cue(i);
+      }
+    }
+  }
 }

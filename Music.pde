@@ -36,12 +36,12 @@ class Music{
     fft = new FFT(song.bufferSize(), song.sampleRate());
   }
   
-  void reWind(){
+  void reWind(){//resets the player
     song.rewind();
     song.pause();
   }
   
-  void wave(int startX,int startY){
+  void wave(int startX,int startY){//draws the frequency and waveform
     fft.forward(song.mix);
     stroke(255, 0, 0);
     int j = 0;
@@ -57,7 +57,7 @@ class Music{
     }
   };
 
-  void songTime(int startX){
+  void songTime(int startX){//display time bar and song name
     fill(255);
     textAlign(LEFT);
     text(meta.title(), startX+1, height - 22);
