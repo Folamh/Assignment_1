@@ -97,7 +97,7 @@ void draw(){
       file.get(track).wave(menuWidth, height / 2);//Displays the waveform and frequency
     }
   }
-  if(! file.get(track).song.isPlaying()){//If the song ends it will play the next track.
+  if(! file.get(track).song.isPlaying() && pause == false){//If the song ends it will play the next track.
     file.get(track).reWind();
     track++;
     if(track >= file.size()){
@@ -153,7 +153,7 @@ public void Play(){
 
 public void Pause(){// if the song is playing it will pause it
   if(file.get(track).song.isPlaying()){
-    pause = false;
+    pause = true;
     file.get(track).song.pause();
   }
 }
