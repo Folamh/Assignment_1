@@ -3,6 +3,8 @@ Ross Murphy C14341031
 This program visualizes the waveform and frequency of songs as well as acts as a (terrible) media player. 
 It also allows the user to compare the lengths of songs.
 
+![alt tag](README_pics/start.PNG)
+
 When the program stats it will play the first song on the dropdown list in the top left. If you click on one of the songs on the list it will switch to that song.
 
 ![alt tag](README_pics/select.PNG)
